@@ -1,0 +1,4 @@
+enum ScreenName {
+  startScreen,
+  questionsScreen,
+}
