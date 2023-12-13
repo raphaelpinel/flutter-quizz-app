@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizz_app/enums/screenName.enum.dart';
+import 'package:quizz_app/models/screen_name.enum.dart';
 import 'package:quizz_app/questions_screen.dart';
 import 'package:quizz_app/start_screen.dart';
 
