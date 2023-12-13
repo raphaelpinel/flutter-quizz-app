@@ -15,31 +15,26 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
     final currentQuestion = questions[0];
     return SizedBox(
       width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Column(children: [
+      child: Container(
+        margin: const EdgeInsets.all(40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
             Text(
               currentQuestion.questionText,
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white, fontSize: 16),
+              textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 20),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: currentQuestion.answers.length,
-              itemBuilder: (context, index) {
-                final answer = currentQuestion.answers[index];
-                return AnswerButton(
-                  onPressed: () {},
-                  answerText: answer,
-                );
-              },
-            ),
-          ]
-              // questions.map((question) => Text(question.toString())).toList(),
-              ),
-          // END: be15d9bcejpp
-        ],
+            const SizedBox(height: 30),
+            ...currentQuestion.getShuffledAnswers().map(
+                  (answer) => AnswerButton(
+                    onPressed: () {},
+                    answerText: answer, 
+                  ),
+                ),
+          ],
+        ),
       ),
     );
   }
