@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizz_app/answer_button.dart';
+import 'package:quizz_app/quiz_header_text.dart';
 import 'questions.dart';
 
 class QuestionsScreen extends StatefulWidget {
@@ -32,11 +33,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
         : null;
     List<Widget> content = currentQuestionIndex < questions.length
         ? [
-            Text(
-              currentQuestion!.questionText,
-              style: const TextStyle(color: Colors.white, fontSize: 16),
-              textAlign: TextAlign.center,
-            ),
+            QuizHeaderText(currentQuestion!.questionText),
             const SizedBox(height: 30),
             ...currentQuestion.getShuffledAnswers().map(
                   (answer) => AnswerButton(
@@ -51,10 +48,8 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                 ),
           ]
         : [
-            const Text(
+            const QuizHeaderText(
               'You have completed the quiz!',
-              style: TextStyle(color: Colors.white, fontSize: 16),
-              textAlign: TextAlign.center,
             ),
             Text(
               'Your score is: $score/${questions.length}',

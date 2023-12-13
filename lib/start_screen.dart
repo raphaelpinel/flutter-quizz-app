@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizz_app/quiz_header_text.dart';
 
 class StartScreen extends StatelessWidget {
   final void Function() switchScreen;
@@ -27,14 +28,8 @@ class StartScreen extends StatelessWidget {
             ),
             const Padding(
               padding: EdgeInsets.only(top: 40),
-              child: Text(
+              child: QuizHeaderText(
                 'Learn Flutter the fun way!',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Color.fromARGB(220, 255, 255, 255),
-                  fontWeight: FontWeight.normal,
-                ),
               ),
             ),
             const SizedBox(height: 20),
