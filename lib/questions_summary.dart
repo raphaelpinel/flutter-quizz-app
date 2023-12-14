@@ -90,12 +90,19 @@ class QuestionsSummary extends StatelessWidget {
                                   ],
                                 ),
                                 Flexible(
-                                  child: Text(data['correct_answer'].toString(),
-                                      style: const TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 134, 162, 197),
-                                        fontWeight: FontWeight.bold,
-                                      )),
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.arrow_forward_rounded,
+                                          color: ColorConstants.primaryBlue),
+                                      const SizedBox(width: 5),
+                                      Text(data['correct_answer'].toString(),
+                                          style: TextStyle(
+                                            color:
+                                                ColorConstants.primaryBlue,
+                                            fontWeight: FontWeight.bold,
+                                          )),
+                                    ],
+                                  ),
                                 ),
                               ],
                       ],
