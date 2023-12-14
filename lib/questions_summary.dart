@@ -55,11 +55,13 @@ class QuestionsSummary extends StatelessWidget {
                             ? [
                                 Row(
                                   children: [
-                                    Text(
-                                      data['correct_answer'].toString(),
-                                      style: TextStyle(
-                                        color: ColorConstants.successGreen,
-                                        fontWeight: FontWeight.bold,
+                                    Flexible(
+                                      child: Text(
+                                        data['correct_answer'].toString(),
+                                        style: TextStyle(
+                                          color: ColorConstants.successGreen,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
                                     const SizedBox(width: 5),
@@ -71,12 +73,15 @@ class QuestionsSummary extends StatelessWidget {
                             : [
                                 Row(
                                   children: [
-                                    Text(
-                                      data['user_answer'].toString(),
-                                      style: TextStyle(
-                                        color: ColorConstants.errorRed,
-                                        fontWeight: FontWeight.bold,
-                                        decoration: TextDecoration.lineThrough,
+                                    Flexible(
+                                      child: Text(
+                                        data['user_answer'].toString(),
+                                        style: TextStyle(
+                                          color: ColorConstants.errorRed,
+                                          fontWeight: FontWeight.bold,
+                                          decoration:
+                                              TextDecoration.lineThrough,
+                                        ),
                                       ),
                                     ),
                                     const SizedBox(width: 5),
@@ -84,11 +89,14 @@ class QuestionsSummary extends StatelessWidget {
                                         color: ColorConstants.errorRed),
                                   ],
                                 ),
-                                Text(data['correct_answer'].toString(),
-                                    style: const TextStyle(
-                                      color: Color.fromARGB(255, 134, 162, 197),
-                                      fontWeight: FontWeight.bold,
-                                    )),
+                                Flexible(
+                                  child: Text(data['correct_answer'].toString(),
+                                      style: const TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 134, 162, 197),
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                ),
                               ],
                       ],
                     ),
