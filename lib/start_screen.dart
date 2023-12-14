@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizz_app/normal_button.dart';
 import 'package:quizz_app/quiz_header_text.dart';
 
 class StartScreen extends StatelessWidget {
@@ -33,21 +34,7 @@ class StartScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            TextButton.icon(
-              icon: const Icon(
-                Icons.play_arrow,
-                color: Colors.white,
-              ),
-              label: const Text(
-                'Start Quiz',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.white,
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-              onPressed: switchScreen,
-            ),
+            NormalButton(text: 'Start Quiz', onPressed: switchScreen),
           ],
         ),
       ),

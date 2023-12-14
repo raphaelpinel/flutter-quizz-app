@@ -4,69 +4,30 @@ import 'package:quizz_app/quiz_header_text.dart';
 import 'questions.dart';
 
 class QuestionsScreen extends StatefulWidget {
-  const QuestionsScreen({super.key});
+  const QuestionsScreen(
+      {super.key,
+      required this.onSelectAnswer,
+      required this.currentQuestionIndex});
+
+  final void Function(String answer) onSelectAnswer;
+  final int currentQuestionIndex;
 
   @override
   State<QuestionsScreen> createState() => _QuestionsScreenState();
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
-  var currentQuestionIndex = 0;
-  var score = 0;
 
-  void _incrementQuestionIndex() {
-    setState(() {
-      currentQuestionIndex++;
-    });
-  }
-
-  void setScore(int newScore) {
-    setState(() {
-      score = newScore;
-    });
+  void answerQuestion(String selectedAnswer) {
+    widget.onSelectAnswer(selectedAnswer);
   }
 
   @override
   Widget build(BuildContext context) {
-    final currentQuestion = currentQuestionIndex < questions.length
-        ? questions[currentQuestionIndex]
+    final currentQuestion = widget.currentQuestionIndex < questions.length
+        ? questions[widget.currentQuestionIndex]
         : null;
-    List<Widget> content = currentQuestionIndex < questions.length
-        ? [
-            QuizHeaderText(currentQuestion!.questionText),
-            const SizedBox(height: 30),
-            ...currentQuestion.getShuffledAnswers().map(
-                  (answer) => AnswerButton(
-                    onPressed: () {
-                      _incrementQuestionIndex();
-                      if (answer == currentQuestion.answers[0]) {
-                        setScore(score + 1);
-                      }
-                    },
-                    answerText: answer,
-                  ),
-                ),
-          ]
-        : [
-            const QuizHeaderText(
-              'You have completed the quiz!',
-            ),
-            Text(
-              'Your score is: $score/${questions.length}',
-              style: const TextStyle(color: Colors.white, fontSize: 16),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 30),
-            AnswerButton(
-              onPressed: () {
-                setState(() {
-                  currentQuestionIndex = 0;
-                  score = 0;
-                });
-              },
-              answerText: 'Restart Quiz',
-            ),
-          ];
+    
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -74,7 +35,18 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: content,
+          children: [
+            QuizHeaderText(currentQuestion!.questionText),
+            const SizedBox(height: 30),
+            ...currentQuestion.getShuffledAnswers().map(
+                  (answer) => AnswerButton(
+                    answerText: answer,
+                    onPressed: () {
+                      answerQuestion(answer);
+                    },
+                  ),
+                ),
+          ],
         ),
       ),
     );
