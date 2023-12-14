@@ -11,7 +11,7 @@ class QuizHeaderText extends StatelessWidget {
     return Text(
       text,
       textAlign: TextAlign.center,
-      style: GoogleFonts.preahvihear(
+      style: GoogleFonts.lato(
         textStyle: const TextStyle(
           color: Color.fromARGB(255, 210, 192, 220),
           fontSize: 18,

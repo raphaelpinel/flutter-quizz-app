@@ -22,6 +22,7 @@ class ResultsScreen extends StatelessWidget {
         // the correct answer is always the first one
         'correct_answer': questions[i].answers[0],
         'user_answer': selectedAnswers[i],
+        'is_correct_answer': questions[i].answers[0] == selectedAnswers[i],
       });
     }
     return summary;
@@ -36,7 +37,7 @@ class ResultsScreen extends StatelessWidget {
 
     final numberOfTotalQuestions = questions.length;
     final numberOfCorrectAnswers = summaryData.where((data) {
-      return data['user_answer'] == data['correct_answer'];
+      return data['is_correct_answer'] == true;
     }).length;
     return SizedBox(
       width: double.infinity,
@@ -46,7 +47,7 @@ class ResultsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             QuizHeaderText(
-              'You answered $numberOfCorrectAnswers out of $numberOfTotalQuestions questions correctly:',
+              'You answered $numberOfCorrectAnswers out of $numberOfTotalQuestions questions correctly!',
             ),
             const SizedBox(height: 16),
             QuestionsSummary(summaryData),
@@ -54,6 +55,7 @@ class ResultsScreen extends StatelessWidget {
             NormalButton(
               onPressed: switchScreen,
               text: 'Restart Quiz',
+                icon: Icons.refresh
             ),
           ],
         ),

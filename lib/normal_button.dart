@@ -3,18 +3,20 @@ import 'package:flutter/material.dart';
 class NormalButton extends StatelessWidget {
   final String text;
   final void Function()? onPressed;
+  final IconData? icon;
 
   const NormalButton({
     required this.text,
     this.onPressed,
+    this.icon = Icons.play_arrow,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextButton.icon(
-      icon: const Icon(
-        Icons.play_arrow,
+      icon: Icon(
+        icon,
         color: Colors.white,
       ),
       label: Text(
