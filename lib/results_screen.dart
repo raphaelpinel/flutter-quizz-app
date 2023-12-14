@@ -13,7 +13,7 @@ class ResultsScreen extends StatelessWidget {
   final List<String> selectedAnswers;
   final VoidCallback switchScreen;
 
-  List<Map<String, Object>> getSummaryData() {
+  List<Map<String, Object>> get summaryData {
     final List<Map<String, Object>> summary = [];
     for (var i = 0; i < selectedAnswers.length; i++) {
       summary.add({
@@ -32,7 +32,6 @@ class ResultsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     log('selectedAnswers: $selectedAnswers');
     inspect(questions);
-    final summaryData = getSummaryData();
     inspect(summaryData);
 
     final numberOfTotalQuestions = questions.length;
