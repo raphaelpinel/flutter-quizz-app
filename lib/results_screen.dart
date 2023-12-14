@@ -30,9 +30,6 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log('selectedAnswers: $selectedAnswers');
-    inspect(questions);
-    inspect(summaryData);
 
     final numberOfTotalQuestions = questions.length;
     final numberOfCorrectAnswers =
